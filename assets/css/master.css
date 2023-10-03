@@ -1,0 +1,428 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-size: 15pt;
+}
+:root{
+    --color-white: hsl(0, 0%, 100%);
+    --color-black: hsl(0, 0%, 4%);
+    --color-light: hsl(0, 0%, 96%);
+    --color-dark: hsl(0, 0%, 21%);
+    --color-primary: hsl(171, 100%, 41%);
+    --color-link: hsl(217, 71%, 53%);
+    --color-info: hsl(204, 86%, 53%);
+    --color-success:  hsl(141, 53%, 53%);
+    --color-warning: hsl(48, 100%, 67%);
+    --color-danger: hsl(348, 100%, 61%);
+
+    --color-orange: hsl(24, 100%, 50%);
+    --color-purple: hsl(269, 68%, 46%);
+    --color-turquesa: hsl(175, 63%, 43%);
+}
+
+body{
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-family: sans-serif;
+
+}
+
+.div-centered{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    min-height: 100%;
+}
+/*------------- estilos para la pagina Bienvenid -------------------------------------*/
+.bienvenida-container{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: var(--color-light); /* Cambiamos el color del texto a blanco */
+   /* background-color: #000; /* Cambiamos el color de fondo a negro */
+    padding: 20px; /* Añadimos espacio alrededor del contenido */
+}
+
+.heigthTemp{
+    height: 100vh;
+
+}
+.bienvenida-container h1{
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+
+.bienvenida-container p{
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.bienvenida-container .imagen-chica {
+    width: 100px;
+    height: 100px;
+    background-image: url('../images/Screenshot_20231002_085310_WhatsApp.jpg'); /* Reemplaza con la URL de tu imagen de la chica */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: rotate(270deg);
+}
+
+.msj-hidden{
+    display: none;
+}
+
+/*Estilo para botones en Genereal*/
+.btn{
+    position: relative;
+    padding: 20px 50px;
+    color: var(--color-light);
+    letter-spacing: 5px;
+}
+
+.btn-bienvenida{
+    border: 3px solid var(--color-link);
+    overflow: hidden;
+}
+.btn-bienvenida::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--color-link);
+    z-index: -2;
+}
+.btn-bienvenida::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    left: 0;
+    bottom: -150%;
+    border-radius: 30%;
+    background-color: var(--color-black);
+    z-index: -1;
+}
+
+.btn-bienvenida:hover::before{
+    animation: btnBienvenida 2s linear both;
+}
+
+/*-------------------------------- Estilos para la PAgina TarjetasCumpleñaos ---------------------------------------*/
+
+/* Estilos para las tarjetas */
+.tarjeta{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 1rem;
+    align-items: center;
+    text-wrap: wrap;
+    text-align: center;
+    letter-spacing: px;
+}
+.tarjeta h1, span{
+    font-size: 1.5rem;
+    color: var(--color-warning);
+}
+.tarjeta h1 span{
+    color: var(--color-primary);
+}
+
+.tarjeta p{
+    font-size: 1rem;
+    font-style: italic;
+    margin: 2rem 0;
+    text-shadow: 0 1px 5px var(--color-white);
+
+}.tarjeta p span{
+    font-size: 1.5rem;
+    color: var(--color-purple);
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.container-main{
+    position: relative;
+    height: auto;
+    margin: 2rem 10px;
+    padding: 1.5rem 1rem;
+    margin-bottom: 5rem;
+}
+
+.cards-container {
+    display: flex;
+    gap: 2rem;
+    flex-flow:row wrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;   
+    width: 250px;
+}
+
+.cards-container .card {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 1.5s ease-in-out;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.back {
+    transform: rotateY(180deg);
+    text-align: center;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--color-link);
+    letter-spacing: 1px;
+    
+    
+}
+
+.cards-container .card:nth-child(1) .front{
+    color: var(--color-light);
+    background-image: url('../images/img11.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+
+.cards-container .card:nth-child(2) .front{
+    color: var(--color-light);
+    background-image: url('../images/img1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+.cards-container .card:nth-child(3) .front{
+    color: var(--color-light);
+    background-image: url('../images/img2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+.cards-container .card:nth-child(4) .front{
+    color: var(--color-light);
+    background-image: url('../images/img3.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+.cards-container .card:nth-child(5) .front{
+    color: var(--color-light);
+    background-image: url('../images/img15.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+
+.cards-container .card:nth-child(6) .front{
+    color: var(--color-light);
+    background-image: url('../images/img9.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+.cards-container .card:nth-child(7) .front{
+    color: var(--color-light);
+    background-image: url('../images/img7.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+.cards-container .card:nth-child(8) .front{
+    color: var(--color-light);
+    background-image: url('../images/img8.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 2px 5px black;
+    text-decoration: underline;
+}
+.cards-container .card:nth-child(9) .front{
+    color: var(--color-light);
+    background-image: url('../images/img14.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+}
+.cards-container .card:nth-child(10) .front{
+    color: var(--color-light);
+    background-image: url('../images/img13.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: initial;
+    text-shadow: 0 1px 1px black;
+    text-decoration: underline;
+    
+}
+
+
+.cards-container .card:nth-child(2) .back{
+    color: var(--color-light);
+}
+.cards-container .card:nth-child(3) .back{
+    color: var(--color-danger);
+}
+.cards-container .card:nth-child(4) .back{
+    color: var(--color-primary);
+}
+.cards-container .card:nth-child(5) .back{
+    color: var(--color-orange);
+}
+.cards-container .card:nth-child(6) .back{
+    color: var(--color-white);
+}
+.cards-container .card:nth-child(7) .back{
+    color: pink;
+}
+.cards-container .card:nth-child(8) .back{
+    color: var(--color-info);
+}
+.cards-container .card:nth-child(9) .back{
+    color: var(--color-orange);
+}
+
+.cards-container .card:nth-child(10) .back{
+    color: aquamarine;
+}
+
+/* Estilos para las animaciones al pasar el ratón */
+.card:hover .front {
+    transform: rotateY(180deg);
+}
+
+.card:hover .back {
+    transform: rotateY(0);
+}
+
+
+.imgRegalo{
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-image: url('../images/regalo.png'); /* Reemplaza con la URL de tu imagen de corazón */
+    background-size: cover;
+    animation: moveHeart 10s linear infinite;
+}
+
+.btn-shadow{
+    
+    position: absolute;
+    margin-top: 2rem;
+    border-radius: 20px;
+    border: 1px solid var(--color-info);
+}
+.btn-shadow:hover{
+    box-shadow: 0 0 15px var(--color-link);
+}
+.parrafo-final{
+    margin-top: 1rem;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/*------------------ Estilos solo para Dispositivos Moviles---------------  */
+@media screen and (min-width: 768px) {
+    /* Oculta el div de bienvenida en dispositivos con un ancho de pantalla mayor o igual a 768px */
+    .bienvenida-container {
+        display: none;
+    }
+    .msj-hidden{
+        display: block;
+        color: var(--color-danger);
+        font-size: 3rem;
+        text-align: center;
+    }
+    .container-main{
+        display: none;
+    }
+        
+    .imgRegalo{
+        display: none;
+    }
+}
+
+/*-------------- KeyFrames Para ANimaciones ------------*/
+@keyframes btnBienvenida {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        bottom: 100px;
+        transform: rotate(360deg);
+    }
+    
+}
+
+
+@keyframes moveHeart {
+    0%, 100% {
+        top: 0;
+        left: 0;
+    }
+    25%, 75% {
+        top: 0;
+        left: 100%;
+    }
+    50% {
+        top: 100%;
+        left: 100%;
+    }
+    75%{
+        top: 100%;
+        left: 0;
+    }
+    100%{
+        top: 0;
+        left: 0;
+    }
+}
